@@ -43,8 +43,6 @@
     "Feature:SocialLogins": "社交登录",
     "Feature:UserCount": "用户数量",
     "Feature:UserCount.Maximum": "允许的最大用户数量为{0}",
-    "HelloAbp.QA:H0001": "H0001-错误1",
-    "HelloAbp.QA:H0002": "H0002-错误2",
     "Permission:BookStore": "书店管理",
     "Permission:Books": "书店管理",
     "Permission:Books.Create": "创建书本",

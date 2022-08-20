@@ -41,7 +41,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('AbpTenantManagement[\'Actions\']')"
+        :label="$t('AbpSettingManagement[\'Settings\']')"
         align="center"
         width="500"
         class-name="small-padding fixed-width"

@@ -3,7 +3,7 @@ import qs from 'querystring'
 
 export function login(data) {
   return request({
-    baseURL: "https://localhost:44316",
+    baseURL: 'https://localhost:44316',
     url: '/connect/token',
     method: 'post',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -18,9 +18,3 @@ export function getInfo() {
   })
 }
 
-export function logout() {
-  return request({
-    url: '/api/account/logout',
-    method: 'get'
-  })
-}

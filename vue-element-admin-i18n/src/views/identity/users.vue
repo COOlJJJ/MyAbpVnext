@@ -61,7 +61,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        :label="$t('AbpIdentity[\'Actions\']')"
+        :label="$t('AbpSettingManagement[\'Settings\']')"
         align="center"
         width="300"
         class-name="small-padding fixed-width"
@@ -73,7 +73,7 @@
             size="mini"
             @click="handleUpdate(row)"
           >
-            {{ $t("AbpIdentity['Edit']") }}
+            {{ $t("AbpIdentity[\'Permission:Edit\']") }}
           </el-button>
           <el-button
             v-if="checkPermission('AbpIdentity.Users.ManagePermissions')"
@@ -89,7 +89,7 @@
             type="danger"
             @click="handleDelete(row, $index)"
           >
-            {{ $t("AbpIdentity['Delete']") }}
+            {{ $t("AbpIdentity[\'Permission:Delete\']") }}
           </el-button>
         </template>
       </el-table-column>

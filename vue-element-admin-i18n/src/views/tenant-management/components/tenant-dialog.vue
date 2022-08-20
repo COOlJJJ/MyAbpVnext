@@ -41,7 +41,7 @@
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogFormVisible = false">
-        {{ $t("AbpTenantManagement['Cancel']") }}
+        {{ $t("AbpTenantManagement[\'Permission:Create\']") }}
       </el-button>
       <el-button
         type="primary"
