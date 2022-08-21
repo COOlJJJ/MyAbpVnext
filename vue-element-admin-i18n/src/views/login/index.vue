@@ -1,222 +1,237 @@
 <template>
-  <div class="login-container">
-    <el-form
-      ref="loginForm"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-      autocomplete="on"
-      label-position="left"
-    >
-      <div class="title-container">
-        <h3 class="title">
-          {{ $t('MyAbpVnext["Login:Title"]') }}
-        </h3>
-        <lang-select class="set-language" />
-      </div>
+  <div class="bodymain">
+    <img src="../../assets/backgroundimg/bg.png" alt="" class="wave" />
+    <el-header style="padding: 0; width: 100%; position: fixed; z-index: 1"
+      ><div style="display: flex; justify-content: end">
+        <img
+          src="../../assets/LOGO/siemens.svg"
+          alt=""
+          style="
+            width: 170px;
+            height: 50px;
+            margin-left: 5px;
+            margin-right: 5px;
+            z-index: 1;
+          "
+        /></div
+    ></el-header>
 
-      <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          :placeholder="$t('AbpAccount[\'UserNameOrEmailAddress\']')"
-          name="username"
-          type="text"
-          tabindex="1"
+    <div class="container">
+      <div class="img">
+        <img src="../../assets/backgroundimg/Pic.svg" alt="" />
+      </div>
+      <div class="login-container">
+        <el-form
+          ref="loginForm"
+          :model="loginForm"
+          :rules="loginRules"
+          class="login-form"
           autocomplete="on"
-        />
-      </el-form-item>
-
-      <el-tooltip
-        v-model="capsTooltip"
-        content="Caps lock is On"
-        placement="right"
-        manual
-      >
-        <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password" />
-          </span>
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            :placeholder="$t('AbpAccount[\'Password\']')"
-            name="password"
-            tabindex="2"
-            autocomplete="on"
-            @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
-          />
-          <span class="show-pwd" @click="showPwd">
-            <svg-icon
-              :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
-            />
-          </span>
-        </el-form-item>
-      </el-tooltip>
-
-      <el-button
-        :loading="loading"
-        type="primary"
-        style="width:100%;margin-bottom:30px;"
-        @click.native.prevent="handleLogin"
-      >
-        {{ $t("AbpAccount['Login']") }}
-      </el-button>
-
-      <div style="text-align:right;">
-        <span
-          style="color:#fff;font-size:14px;padding-right:15px;"
-        >{{ $t("AbpUiMultiTenancy['Tenant']") }}
-          <el-tooltip
-            :content="$t('AbpUiMultiTenancy[\'Switch\']')"
-            effect="dark"
-            placement="bottom"
-          >
-            <el-link
-              :underline="false"
-              @click="tenantDialogFormVisible = true"
-            ><i>{{
-              currentTenant
-                ? currentTenant
-                : $t("AbpUiMultiTenancy['NotSelected']")
-            }}</i></el-link>
-          </el-tooltip>
-        </span>
-        <el-button
-          class="thirdparty-button"
-          type="primary"
-          @click="showDialog = true"
+          label-position="left"
         >
-          {{ $t("MyAbpVnext['Login:ThirdParty']") }}
-        </el-button>
-      </div>
+          <div class="title-container">
+            <h3 class="title">
+              {{ $t('MyAbpVnext["Login:Title"]') }}
+            </h3>
+            <lang-select class="set-language" />
+          </div>
+          <h5>{{ $t('MyAbpVnext["Login:UserName"]') }}</h5>
+          <el-form-item prop="username">
+            <span class="svg-container">
+              <svg-icon icon-class="user" />
+            </span>
+            <el-input
+              ref="username"
+              v-model="loginForm.username"
+              :placeholder="$t('AbpAccount[\'UserNameOrEmailAddress\']')"
+              name="username"
+              type="text"
+              tabindex="1"
+              autocomplete="on"
+            />
+          </el-form-item>
+          <h5>{{ $t('MyAbpVnext["Login:Password"]') }}</h5>
+          <el-tooltip
+            v-model="capsTooltip"
+            content="Caps lock is On"
+            placement="right"
+            manual
+          >
+            <el-form-item prop="password">
+              <span class="svg-container">
+                <svg-icon icon-class="password" />
+              </span>
+              <el-input
+                :key="passwordType"
+                ref="password"
+                v-model="loginForm.password"
+                :type="passwordType"
+                :placeholder="$t('AbpAccount[\'Password\']')"
+                name="password"
+                tabindex="2"
+                autocomplete="on"
+                @keyup.native="checkCapslock"
+                @blur="capsTooltip = false"
+                @keyup.enter.native="handleLogin"
+              />
+              <span class="show-pwd" @click="showPwd">
+                <svg-icon
+                  :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
+                />
+              </span>
+            </el-form-item>
+          </el-tooltip>
 
-      <p style="font-size:14px;text-align:center;color:#fff;">
+          <el-button
+            :loading="loading"
+            class="btn"
+            type="primary"
+            style="width: 100%; margin-bottom: 30px"
+            @click.native.prevent="handleLogin"
+          >
+            {{ $t("AbpAccount['Login']") }}
+          </el-button>
+
+          <div style="text-align: right">
+            <span style="color: #000; font-size: 14px; padding-right: 15px"
+              >{{ $t("AbpUiMultiTenancy['Tenant']") }}
+              <el-tooltip
+                :content="$t('AbpUiMultiTenancy[\'Switch\']')"
+                effect="dark"
+                placement="bottom"
+              >
+                <el-link
+                  :underline="false"
+                  @click="tenantDialogFormVisible = true"
+                  ><i>{{
+                    currentTenant
+                      ? currentTenant
+                      : $t("AbpUiMultiTenancy['NotSelected']")
+                  }}</i></el-link
+                >
+              </el-tooltip>
+            </span>
+          </div>
+
+          <!-- <p style="font-size:14px;text-align:center;color:#fff;">
         {{ $t("AbpAccount['AreYouANewUser']") }}
         <el-link
           :underline="false"
         ><i>{{ $t("AbpAccount['Register']") }}</i></el-link>
-      </p>
+      </p> -->
+        </el-form>
 
-    </el-form>
-
-    <el-dialog
-      :title="$t('AbpUiMultiTenancy[\'SwitchTenant\']')"
-      :visible.sync="tenantDialogFormVisible"
-    >
-      <el-form ref="dataForm" :model="tenant" label-position="top">
-        <el-form-item :label="$t('AbpUiMultiTenancy[\'Name\']')">
-          <el-input v-model="tenant.name" type="text" />
-          <span>{{ $t("AbpUiMultiTenancy['SwitchTenantHint']") }}</span>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="tenantDialogFormVisible = false">
-          {{ $t("AbpTenantManagement['Cancel']") }}
-        </el-button>
-        <el-button
-          type="primary"
-          :disabled="tenantDisabled"
-          @click="saveTenant()"
+        <el-dialog
+          :title="$t('AbpUiMultiTenancy[\'SwitchTenant\']')"
+          :visible.sync="tenantDialogFormVisible"
         >
-          {{ $t("AbpTenantManagement['Save']") }}
-        </el-button>
+          <el-form ref="dataForm" :model="tenant">
+            <el-form-item
+              :label="$t('AbpUiMultiTenancy[\'Name\']')"
+              style="background: rgba(255, 255, 255, 0.1)"
+            >
+              <el-input
+                v-model="tenant.name"
+                type="text"
+                style="width: 160px; background: #e5e5e5"
+                autofocus
+              />
+              <div>{{ $t("AbpUiMultiTenancy['SwitchTenantHint']") }}</div>
+            </el-form-item>
+          </el-form>
+          <div slot="footer">
+            <el-button @click="tenantDialogFormVisible = false" type="info">
+              <!-- {{ $t("AbpTenantManagement['Cancel']") }} -->
+              取消
+            </el-button>
+            <el-button
+              type="primary"
+              :disabled="tenantDisabled"
+              @click="saveTenant()"
+            >
+              <!-- {{ $t("AbpTenantManagement['Save']") }} -->
+              保存
+            </el-button>
+          </div>
+        </el-dialog>
       </div>
-    </el-dialog>
-
-    <el-dialog
-      :title="$t('MyAbpVnext[\'Login:ThirdParty\']')"
-      :visible.sync="showDialog"
-    >
-      {{ $t("MyAbpVnext['Login:ThirdPartyTips']") }}
-      <br>
-      <br>
-      <br>
-      <social-sign />
-    </el-dialog>
+    </div>
   </div>
 </template>
 
 <script>
-import LangSelect from '@/components/LangSelect'
-import SocialSign from './components/SocialSignin'
+import LangSelect from "@/components/LangSelect";
+import SocialSign from "./components/SocialSignin";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: { LangSelect, SocialSign },
   data() {
     return {
       loginForm: {
-        username: 'admin',
-        password: '1q2w3E*'
+        username: "admin",
+        password: "1q2w3E*",
       },
       loginRules: {
         username: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ['blur', 'change']
-          }
+            trigger: ["blur", "change"],
+          },
         ],
         password: [
           {
             required: true,
             message: this.$i18n.t("AbpAccount['ThisFieldIsRequired.']"),
-            trigger: ['blur', 'change']
-          }
-        ]
+            trigger: ["blur", "change"],
+          },
+        ],
       },
-      passwordType: 'password',
+      passwordType: "password",
       capsTooltip: false,
       loading: false,
       showDialog: false,
       redirect: undefined,
       otherQuery: {},
       tenantDialogFormVisible: false,
-      tenant: { name: this.$store.getters.abpConfig.currentTenant.name }
-    }
+      tenant: { name: this.$store.getters.abpConfig.currentTenant.name },
+    };
   },
   computed: {
     currentTenant() {
-      return this.$store.getters.abpConfig.currentTenant.name
+      return this.$store.getters.abpConfig.currentTenant.name;
     },
     tenantDisabled() {
       if (
         this.tenant.name &&
         this.tenant.name === this.$store.getters.abpConfig.currentTenant.name
       ) {
-        return true
+        return true;
       }
-      return false
-    }
+      return false;
+    },
   },
   watch: {
     $route: {
-      handler: function(route) {
-        const query = route.query
+      handler: function (route) {
+        const query = route.query;
         if (query) {
-          this.redirect = query.redirect
-          this.otherQuery = this.getOtherQuery(query)
+          this.redirect = query.redirect;
+          this.otherQuery = this.getOtherQuery(query);
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   created() {
     // window.addEventListener('storage', this.afterQRScan)
   },
   mounted() {
-    if (this.loginForm.username === '') {
-      this.$refs.username.focus()
-    } else if (this.loginForm.password === '') {
-      this.$refs.password.focus()
+    if (this.loginForm.username === "") {
+      this.$refs.username.focus();
+    } else if (this.loginForm.password === "") {
+      this.$refs.password.focus();
     }
   },
   destroyed() {
@@ -224,119 +239,99 @@ export default {
   },
   methods: {
     checkCapslock(e) {
-      const { key } = e
-      this.capsTooltip = key && key.length === 1 && key >= 'A' && key <= 'Z'
+      const { key } = e;
+      this.capsTooltip = key && key.length === 1 && key >= "A" && key <= "Z";
     },
     showPwd() {
-      if (this.passwordType === 'password') {
-        this.passwordType = ''
+      if (this.passwordType === "password") {
+        this.passwordType = "";
       } else {
-        this.passwordType = 'password'
+        this.passwordType = "password";
       }
       this.$nextTick(() => {
-        this.$refs.password.focus()
-      })
+        this.$refs.password.focus();
+      });
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          this.loading = true
+          this.loading = true;
           this.$store
-            .dispatch('user/login', this.loginForm)
+            .dispatch("user/login", this.loginForm)
             .then(() => {
               this.$router.push({
-                path: this.redirect || '/',
-                query: this.otherQuery
-              })
-              this.loading = false
+                path: this.redirect || "/",
+                query: this.otherQuery,
+              });
+              this.loading = false;
             })
             .catch(() => {
-              this.loading = false
-            })
+              this.loading = false;
+            });
         } else {
-          console.log('error submit!!')
-          return false
+          console.log("error submit!!");
+          return false;
         }
-      })
+      });
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
-        if (cur !== 'redirect') {
-          acc[cur] = query[cur]
+        if (cur !== "redirect") {
+          acc[cur] = query[cur];
         }
-        return acc
-      }, {})
+        return acc;
+      }, {});
     },
     saveTenant() {
-      this.$store.dispatch('app/setTenant', this.tenant.name).then(response => {
-        if (response && !response.success) {
-          this.$notify({
-            title: this.$i18n.t("AbpUi['Error']"),
-            message: this.$i18n.t(
-              "AbpUiMultiTenancy['GivenTenantIsNotAvailable']",
-              [this.tenant.name]
-            ),
-            type: 'error',
-            duration: 2000
-          })
-          return
-        }
+      this.$store
+        .dispatch("app/setTenant", this.tenant.name)
+        .then((response) => {
+          if (response && !response.success) {
+            this.$notify({
+              title: this.$i18n.t("AbpUi['Error']"),
+              message: this.$i18n.t(
+                "AbpUiMultiTenancy['GivenTenantIsNotAvailable']",
+                [this.tenant.name]
+              ),
+              type: "error",
+              duration: 2000,
+            });
+            return;
+          }
 
-        this.tenantDialogFormVisible = false
-      })
-    }
-    // afterQRScan() {
-    //   if (e.key === 'x-admin-oauth-code') {
-    //     const code = getQueryObject(e.newValue)
-    //     const codeMap = {
-    //       wechat: 'code',
-    //       tencent: 'code'
-    //     }
-    //     const type = codeMap[this.auth_type]
-    //     const codeName = code[type]
-    //     if (codeName) {
-    //       this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-    //         this.$router.push({ path: this.redirect || '/' })
-    //       })
-    //     } else {
-    //       alert('第三方登录失败')
-    //     }
-    //   }
-    // }
-  }
-}
+          this.tenantDialogFormVisible = false;
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
-
 $bg: #283443;
 $light_gray: #fff;
 $cursor: #fff;
 
-@supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
-  .login-container .login-form .el-input input {
-    color: $cursor;
-  }
-}
+// @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
+//   .login-container .el-input input {
+//     color: $cursor;
+//   }
+// }
 
 /* reset element-ui css */
-.login-container .login-form {
+.login-container {
   .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
-
     input {
       background: transparent;
       border: 0px;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      color: #000000;
       height: 47px;
-      caret-color: $cursor;
+      caret-color: $bg;
 
       &:-webkit-autofill {
         box-shadow: 0 0 0px 1000px $bg inset !important;
@@ -359,17 +354,74 @@ $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 
-.login-container {
-  min-height: 100%;
-  width: 100%;
-  background-color: $bg;
-  overflow: hidden;
+.bodymain {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 18rem;
+  padding: 0 2rem;
+}
+
+.img {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.img img {
+  width: 560px;
+}
+
+.wave {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  height: 47px;
+  border-radius: 25px;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  cursor: pointer;
+  color: #fff;
+  // text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  background-size: 200%;
+  transition: 0.5s;
+}
+.btn:hover {
+  background-position: right;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 18rem;
+  padding: 0 2rem;
+}
+.login-container {
+  display: flex;
   .login-form {
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 250px 35px 0;
     margin: 0 auto;
     overflow: hidden;
   }
@@ -378,7 +430,6 @@ $light_gray: #eee;
     font-size: 14px;
     color: #fff;
     margin-bottom: 10px;
-
     span {
       &:first-of-type {
         margin-right: 16px;
@@ -388,7 +439,7 @@ $light_gray: #eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    // color: $dark_gray;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
@@ -396,17 +447,14 @@ $light_gray: #eee;
 
   .title-container {
     position: relative;
-
     .title {
       font-size: 26px;
-      color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
     }
-
     .set-language {
-      color: #fff;
+      color: rgb(8, 8, 8);
       position: absolute;
       top: 3px;
       font-size: 18px;
@@ -420,19 +468,38 @@ $light_gray: #eee;
     right: 10px;
     top: 7px;
     font-size: 16px;
-    color: $dark_gray;
     cursor: pointer;
     user-select: none;
   }
+}
 
-  .thirdparty-button {
-    bottom: 6px;
+/*媒体查询*/
+@media screen and (max-width: 1440px) {
+  .container {
+    grid-gap: 5rem;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .login-form {
+    width: 360px !important;
   }
 
-  @media only screen and (max-width: 470px) {
-    .thirdparty-button {
-      display: none;
-    }
+  .img img {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 848px) {
+  .wave {
+    display: none;
+  }
+  .img {
+    display: none;
+  }
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .login-container {
+    justify-content: center;
   }
 }
 </style>
