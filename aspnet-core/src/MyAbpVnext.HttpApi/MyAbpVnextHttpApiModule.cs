@@ -12,8 +12,6 @@ using Volo.Abp.TenantManagement;
 namespace MyAbpVnext;
 
 
-
-
 //.HttpApi 项目
 //用于定义API控制器.
 //大多数情况下,你不需要手动定义API控制器,因为ABP的动态API功能会根据你的应用层自动创建API控制器.
