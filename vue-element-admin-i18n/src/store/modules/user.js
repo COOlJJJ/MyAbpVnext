@@ -1,4 +1,4 @@
-import { login, getInfo } from '@/api/user'
+import { login, getInfo,setUserInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 
@@ -15,7 +15,10 @@ const state = {
   token: getToken(),
   name: '',
   avatar: '',
+  userName: '',
   introduction: '',
+  phoneNumber: '',
+  email: '',
   roles: []
 }
 
@@ -29,17 +32,30 @@ const mutations = {
   SET_NAME: (state, name) => {
     state.name = name
   },
+  SET_USERNAME: (state, userName) => {
+    state.userName = userName
+  },
+  SET_TEL: (state, phoneNumber) => {
+    state.phoneNumber = phoneNumber
+  },
   SET_AVATAR: (state, avatar) => {
+    if (!avatar) avatar = 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
     state.avatar = avatar
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
   },
+  SET_EMAIL: (state, email) => {
+    state.email = email
+  },
   CLEAN: state => {
     state.token = ''
     state.name = ''
+    state.userName = ''
     state.avatar = ''
+    state.email = ''
     state.introduction = ''
+    state.phoneNumber = ''
     state.roles = []
   }
 }
@@ -72,16 +88,14 @@ const actions = {
           if (!response) {
             reject('Verification failed, please Login again.')
           }
-
           // const { name } = response;  // modify name to userName;there is bug when the name is null(name can be null when create user)
-          const { userName } = response
-
-          commit('SET_NAME', userName)
-          commit(
-            'SET_AVATAR',
-            'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif'
-          )
-          commit('SET_INTRODUCTION', '')
+          const { userName, name, phoneNumber, email, extraProperties } = response
+          commit('SET_NAME', name)
+          commit('SET_USERNAME', userName)
+          commit('SET_TEL', phoneNumber)
+          commit('SET_AVATAR', extraProperties.Avatar)
+          commit('SET_INTRODUCTION', extraProperties.Introduction)
+          commit('SET_EMAIL', email)
           resolve(response)
         })
         .catch(error => {
@@ -117,7 +131,26 @@ const actions = {
         resolve()
       })
     })
-  }
+  },
+
+  setUserInfo({ commit }, userInfo) {
+    return new Promise((resolve, reject) => {
+      setUserInfo(userInfo)
+        .then(response => {
+          const { userName, name, phoneNumber, email, extraProperties } = userInfo
+          commit('SET_NAME', name)
+          commit('SET_USERNAME', userName)
+          commit('SET_TEL', phoneNumber)
+          commit('SET_AVATAR', extraProperties.Avatar)
+          commit('SET_EMAIL', email)
+          commit('SET_INTRODUCTION', extraProperties.Introduction)
+          resolve(response)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  },
 }
 
 export default {

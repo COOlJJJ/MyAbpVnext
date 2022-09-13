@@ -18,3 +18,19 @@ export function getInfo() {
   })
 }
 
+export function changePassword(data) {
+  return request({
+    url: '/api/account/my-profile/change-password',
+    method: 'post',
+    data: data
+  })
+}
+
+export function setUserInfo(data) {
+  return request({
+    url: '/api/account/my-profile',
+    method: 'put',
+    data: data
+  })
+}
+

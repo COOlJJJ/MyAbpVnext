@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyAbpVnext.Authors;
 using MyAbpVnext.Books;
+using Volo.Abp.AuditLogging;
 
 namespace MyAbpVnext;
 
@@ -17,5 +18,16 @@ public class MyAbpVnextApplicationAutoMapperProfile : Profile
 
         CreateMap<Author, AuthorDto>();
         CreateMap<Author, AuthorLookupDto>();
+
+        //AuditLog
+        CreateMap<AuditLog, AuditLogDto>()
+            .MapExtraProperties();
+
+        CreateMap<EntityChange, EntityChangeDto>()
+            .MapExtraProperties();
+
+        CreateMap<EntityPropertyChange, EntityPropertyChangeDto>();
+
+        CreateMap<AuditLogAction, AuditLogActionDto>();
     }
 }

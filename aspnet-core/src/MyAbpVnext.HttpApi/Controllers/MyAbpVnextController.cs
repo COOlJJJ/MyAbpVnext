@@ -9,9 +9,8 @@ namespace MyAbpVnext.Controllers;
  */
 public abstract class MyAbpVnextController : AbpControllerBase
 {
-    protected MyAbpVnextController(ICurrentUser _currentUser, ICurrentTenant _currentTenant)
+    protected MyAbpVnextController()
     {
         LocalizationResource = typeof(MyAbpVnextResource);
-
     }
 }

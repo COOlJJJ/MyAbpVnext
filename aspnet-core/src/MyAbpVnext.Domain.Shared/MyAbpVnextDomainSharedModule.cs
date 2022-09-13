@@ -1,5 +1,6 @@
 ﻿using MyAbpVnext.Localization;
 using Volo.Abp.AuditLogging;
+using Volo.Abp.AuditLogging.Localization;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -46,6 +47,10 @@ public class MyAbpVnextDomainSharedModule : AbpModule
                 .Add<MyAbpVnextResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/MyAbpVnext");
+            //配置本地化资源
+            options.Resources
+                 .Get<AuditLoggingResource>()
+                 .AddVirtualJson("/Volo/Abp/AuditLogging/Localization");
 
             options.DefaultResourceType = typeof(MyAbpVnextResource);
         });

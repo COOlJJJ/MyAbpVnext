@@ -47,7 +47,7 @@
         type="primary"
         @click="dialogStatus === 'create' ? createData() : updateData()"
       >
-        {{ $t("AbpTenantManagement['Save']") }}
+        {{ $t("AbpUi['Save']") }}
       </el-button>
     </div>
   </el-dialog>

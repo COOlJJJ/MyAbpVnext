@@ -1,4 +1,6 @@
 ﻿using MyAbpVnext.Localization;
+using Volo.Abp.AuditLogging;
+using Volo.Abp.AuditLogging.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 
@@ -26,10 +28,21 @@ public class MyAbpVnextPermissionDefinitionProvider : PermissionDefinitionProvid
         authorsPermission.AddChild(MyAbpVnextPermissions.Authors.Create, L("Permission:Authors.Create"));
         authorsPermission.AddChild(MyAbpVnextPermissions.Authors.Edit, L("Permission:Authors.Edit"));
         authorsPermission.AddChild(MyAbpVnextPermissions.Authors.Delete, L("Permission:Authors.Delete"));
+
+        //AuditLogging
+        var auditLogGroup = context.AddGroup(AuditLogPermissions.GroupName,AuditLoggingL("Permission:AuditLogManagement"));
+        var aduditLogPermission = auditLogGroup.AddPermission(AuditLogPermissions.AuditLogs.Default, AuditLoggingL("Permission:AuditLogManagement"));
+        aduditLogPermission.AddChild(AuditLogPermissions.AuditLogs.Delete, AuditLoggingL("Permission:Delete"));
+
     }
 
     private static LocalizableString L(string name)
     {
         return LocalizableString.Create<MyAbpVnextResource>(name);
+    }
+
+    private static LocalizableString AuditLoggingL(string name)
+    {
+        return LocalizableString.Create<AuditLoggingResource>(name);
     }
 }

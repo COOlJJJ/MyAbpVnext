@@ -30,10 +30,10 @@
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogPermissionFormVisible = false">
-        {{ $t("AbpIdentity['Cancel']") }}
+        {{ $t("AbpUi['Cancel']") }}
       </el-button>
       <el-button type="primary" @click="updatePermissionData()">
-        {{ $t("AbpIdentity['Save']") }}
+        {{ $t("AbpUi['Save']") }}
       </el-button>
     </div>
   </el-dialog>
@@ -145,8 +145,8 @@ export default {
         () => {
           this.dialogPermissionFormVisible = false
           this.$notify({
-            title: this.$i18n.t("HelloAbp['Success']"),
-            message: this.$i18n.t("HelloAbp['SuccessMessage']"),
+            title: this.$i18n.t("MyAbpVnext['Success']"),
+            message: this.$i18n.t("MyAbpVnext['SuccessMessage']"),
             type: 'success',
             duration: 2000
           })

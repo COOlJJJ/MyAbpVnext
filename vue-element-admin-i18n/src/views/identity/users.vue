@@ -107,7 +107,7 @@
       :title="
         dialogStatus == 'create'
           ? $t('AbpIdentity[\'NewUser\']')
-          : $t('AbpIdentity[\'Edit\']')
+          : $t('AbpUi[\'Edit\']')
       "
       :visible.sync="dialogFormVisible"
     >
@@ -191,13 +191,13 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">
-          {{ $t("AbpIdentity['Cancel']") }}
+          {{ $t("AbpUi['Cancel']") }}
         </el-button>
         <el-button
           type="primary"
           @click="dialogStatus === 'create' ? createData() : updateData()"
         >
-          {{ $t("AbpIdentity['Save']") }}
+          {{ $t("AbpUi['Save']") }}
         </el-button>
       </div>
     </el-dialog>

@@ -13,7 +13,7 @@ public class MyAbpVnextDemoController : MyAbpVnextController
 {
     readonly ICurrentTenant currentTenant;
     readonly ICurrentUser currentUser;
-    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant) : base(_currentUser, _currentTenant)
+    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant)
     {
         currentTenant = _currentTenant;
         currentUser = _currentUser;
