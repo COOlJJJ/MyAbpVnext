@@ -4,14 +4,14 @@
       <el-input
         v-model="listQuery.filter"
         :placeholder="$t('AbpUi[\'PagerSearch\']')"
-        style="width: 200px;"
+        style="width: 200px"
         class="filter-item"
         @keyup.enter.native="handleFilter"
       />
       <el-button
         v-if="checkPermission('AbpIdentity.Users.Create')"
         class="filter-item"
-        style="margin-left: 10px;"
+        style="margin-left: 10px"
         type="primary"
         icon="el-icon-edit"
         @click="handleCreate"
@@ -27,7 +27,7 @@
       border
       fit
       highlight-current-row
-      style="width: 100%;"
+      style="width: 100%"
       @sort-change="sortChange"
     >
       <el-table-column
@@ -73,7 +73,7 @@
             size="mini"
             @click="handleUpdate(row)"
           >
-            {{ $t("AbpIdentity[\'Permission:Edit\']") }}
+            {{ $t("AbpIdentity['Permission:Edit']") }}
           </el-button>
           <el-button
             v-if="checkPermission('AbpIdentity.Users.ManagePermissions')"
@@ -89,7 +89,7 @@
             type="danger"
             @click="handleDelete(row, $index)"
           >
-            {{ $t("AbpIdentity[\'Permission:Delete\']") }}
+            {{ $t("AbpIdentity['Permission:Delete']") }}
           </el-button>
         </template>
       </el-table-column>
@@ -182,7 +182,7 @@
                   :key="role.id"
                   :label="role.name"
                   name="roleName"
-                  style="width:100%;"
+                  style="width: 100%"
                 />
               </el-checkbox-group>
             </el-form-item>
@@ -214,92 +214,92 @@ import {
   updateUser,
   deleteUser,
   getRolesByUserId,
-  getAssignableRoles
-} from '@/api/identity/user'
-import Pagination from '@/components/Pagination' // secondary package based on el-pagination
-import baseListQuery, { checkPermission } from '@/utils/abp'
-import PermissionDialog from './components/permission-dialog'
+  getAssignableRoles,
+} from "@/api/identity/user";
+import Pagination from "@/components/Pagination"; // secondary package based on el-pagination
+import baseListQuery, { checkPermission } from "@/utils/abp";
+import PermissionDialog from "./components/permission-dialog";
 
 export default {
-  name: 'Users',
+  name: "Users",
   components: { Pagination, PermissionDialog },
   data() {
     const passwordValidator = (rule, value, callback) => {
       if (this.temp.id && !value) {
-        callback()
-        return
+        callback();
+        return;
       }
 
       if (!value) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['Password']")
+              this.$i18n.t("AbpIdentity['Password']"),
             ])
           )
-        )
-        return
+        );
+        return;
       }
       if (value.length < 6) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Identity.PasswordTooShort']", ['6'])
+            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordTooShort']", ["6"])
           )
-        )
-        return
+        );
+        return;
       }
       if (value.length > 128) {
         callback(
           new Error(
             this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['Password']"), '128']
+              [this.$i18n.t("AbpIdentity['Password']"), "128"]
             )
           )
-        )
-        return
+        );
+        return;
       }
-      let reg = /\d+/
+      let reg = /\d+/;
       if (!reg.test(value)) {
         callback(
           new Error(
             this.$i18n.t("AbpIdentity['Identity.PasswordRequiresDigit']")
           )
-        )
-        return
+        );
+        return;
       }
-      reg = /[a-z]+/
+      reg = /[a-z]+/;
       if (!reg.test(value)) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Identity.PasswordRequiresLower']")
+            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordRequiresLower']")
           )
-        )
-        return
+        );
+        return;
       }
-      reg = /[A-Z]+/
+      reg = /[A-Z]+/;
       if (!reg.test(value)) {
         callback(
           new Error(
-            this.$i18n.t("AbpIdentity['Identity.PasswordRequiresUpper']")
+            this.$i18n.t("AbpIdentity['Volo.Abp.Identity:PasswordRequiresUpper']")
           )
-        )
-        return
+        );
+        return;
       }
-      reg = /\W+/
+      reg = /\W+/;
       if (!reg.test(value)) {
         callback(
           new Error(
             this.$i18n.t(
-              "AbpIdentity['Identity.PasswordRequiresNonAlphanumeric']"
+              "AbpIdentity['Volo.Abp.Identity:PasswordRequiresNonAlphanumeric']"
             )
           )
-        )
-        return
+        );
+        return;
       }
 
-      callback()
-    }
+      callback();
+    };
 
     return {
       tableKey: 0,
@@ -308,226 +308,228 @@ export default {
       listLoading: true,
       listQuery: baseListQuery,
       temp: {
-        userName: '',
-        email: '',
-        name: '',
-        surname: '',
-        phoneNumber: '',
+        userName: "",
+        email: "",
+        name: "",
+        surname: "",
+        phoneNumber: "",
         lockoutEnabled: true,
-        twoFactorEnabled: true,
-        roleNames: []
+        twoFactorEnabled: false,
+        isActive: true,
+        roleNames: [],
       },
       dialogFormVisible: false,
-      dialogStatus: '',
+      dialogStatus: "",
       assignableRoles: null,
       rules: {
         userName: [
           {
             required: true,
             message: this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['UserName']")
+              this.$i18n.t("AbpIdentity['UserName']"),
             ]),
-            trigger: 'blur'
+            trigger: "blur",
           },
           {
             max: 256,
             message: this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['UserName']"), '256']
+              [this.$i18n.t("AbpIdentity['UserName']"), "256"]
             ),
-            trigger: 'blur'
-          }
+            trigger: "blur",
+          },
         ],
         email: [
           {
             required: true,
             message: this.$i18n.t("AbpIdentity['The {0} field is required.']", [
-              this.$i18n.t("AbpIdentity['EmailAddress']")
+              this.$i18n.t("AbpIdentity['EmailAddress']"),
             ]),
-            trigger: 'blur'
+            trigger: "blur",
           },
           {
-            type: 'email',
+            type: "email",
             message: this.$i18n.t(
               "AbpIdentity['The {0} field is not a valid e-mail address.']",
               [this.$i18n.t("AbpIdentity['EmailAddress']")]
             ),
-            trigger: ['blur', 'change']
+            trigger: ["blur", "change"],
           },
           {
             max: 256,
             message: this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['EmailAddress']"), '256']
+              [this.$i18n.t("AbpIdentity['EmailAddress']"), "256"]
             ),
-            trigger: 'blur'
-          }
+            trigger: "blur",
+          },
         ],
         name: [
           {
             max: 64,
             message: this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['DisplayName:Name']"), '64']
+              [this.$i18n.t("AbpIdentity['DisplayName:Name']"), "64"]
             ),
-            trigger: 'blur'
-          }
+            trigger: "blur",
+          },
         ],
         surname: [
           {
             max: 64,
             message: this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['DisplayName:Surname']"), '64']
+              [this.$i18n.t("AbpIdentity['DisplayName:Surname']"), "64"]
             ),
-            trigger: 'blur'
-          }
+            trigger: "blur",
+          },
         ],
         phoneNumber: [
           {
             max: 16,
             message: this.$i18n.t(
               "AbpIdentity['The field {0} must be a string with a maximum length of {1}.']",
-              [this.$i18n.t("AbpIdentity['PhoneNumber']"), '16']
+              [this.$i18n.t("AbpIdentity['PhoneNumber']"), "16"]
             ),
-            trigger: 'blur'
-          }
+            trigger: "blur",
+          },
         ],
         password: [
-          { validator: passwordValidator, trigger: ['blur', 'change'] }
-        ]
-      }
-    }
+          { validator: passwordValidator, trigger: ["blur", "change"] },
+        ],
+      },
+    };
   },
   created() {
-    this.getList()
+    this.getList();
   },
   methods: {
     checkPermission,
     getList() {
-      this.listLoading = true
-      getUsers(this.listQuery).then(response => {
-        this.list = response.items
-        this.total = response.totalCount
+      this.listLoading = true;
+      getUsers(this.listQuery).then((response) => {
+        this.list = response.items;
+        this.total = response.totalCount;
 
-        this.listLoading = false
-      })
+        this.listLoading = false;
+      });
     },
     handleFilter(firstPage = true) {
-      if (firstPage) this.listQuery.page = 1
-      this.getList()
+      if (firstPage) this.listQuery.page = 1;
+      this.getList();
     },
     sortChange(data) {
-      const { prop, order } = data
-      this.listQuery.sort = order ? `${prop} ${order}` : undefined
-      this.handleFilter()
+      const { prop, order } = data;
+      this.listQuery.sort = order ? `${prop} ${order}` : undefined;
+      this.handleFilter();
     },
     resetTemp() {
       this.temp = {
-        userName: '',
-        email: '',
-        name: '',
-        surname: '',
-        phoneNumber: '',
+        userName: "",
+        email: "",
+        name: "",
+        surname: "",
+        phoneNumber: "",
         lockoutEnabled: true,
-        twoFactorEnabled: true,
-        roleNames: []
-      }
+        twoFactorEnabled: false,
+        isActive: true,
+        roleNames: [],
+      };
     },
     handleCreate() {
-      this.resetTemp()
-      this.dialogStatus = 'create'
-      this.dialogFormVisible = true
+      this.resetTemp();
+      this.dialogStatus = "create";
+      this.dialogFormVisible = true;
 
-      getAssignableRoles().then(response => {
-        this.assignableRoles = response.items
-      })
+      getAssignableRoles().then((response) => {
+        this.assignableRoles = response.items;
+      });
 
       this.$nextTick(() => {
-        this.$refs['dataForm'].clearValidate()
-      })
+        this.$refs["dataForm"].clearValidate();
+      });
     },
     createData() {
-      this.$refs['dataForm'].validate(valid => {
+      this.$refs["dataForm"].validate((valid) => {
         if (valid) {
           createUser(this.temp).then(() => {
-            this.handleFilter()
-            this.dialogFormVisible = false
+            this.handleFilter();
+            this.dialogFormVisible = false;
             this.$notify({
               title: this.$i18n.t("MyAbpVnext['Success']"),
               message: this.$i18n.t("MyAbpVnext['SuccessMessage']"),
-              type: 'success',
-              duration: 2000
-            })
-          })
+              type: "success",
+              duration: 2000,
+            });
+          });
         }
-      })
+      });
     },
     handleUpdate(row) {
-      this.temp = Object.assign({ roleNames: [] }, row) // copy obj
-      this.dialogStatus = 'update'
-      this.dialogFormVisible = true
+      this.temp = Object.assign({ roleNames: [] }, row); // copy obj
+      this.dialogStatus = "update";
+      this.dialogFormVisible = true;
 
-      getUserById(row.id).then(response => {
-        this.temp = Object.assign({ roleNames: [] }, response)
+      getUserById(row.id).then((response) => {
+        this.temp = Object.assign({ roleNames: [] }, response);
 
-        getRolesByUserId(row.id).then(response => {
-          response.items.forEach(item => {
-            this.temp.roleNames.push(item.name)
-          })
-        })
-      })
+        getRolesByUserId(row.id).then((response) => {
+          response.items.forEach((item) => {
+            this.temp.roleNames.push(item.name);
+          });
+        });
+      });
 
-      getAssignableRoles().then(response => {
-        this.assignableRoles = response.items
-      })
+      getAssignableRoles().then((response) => {
+        this.assignableRoles = response.items;
+      });
 
       this.$nextTick(() => {
-        this.$refs['dataForm'].clearValidate()
-      })
+        this.$refs["dataForm"].clearValidate();
+      });
     },
     updateData() {
-      this.$refs['dataForm'].validate(valid => {
+      this.$refs["dataForm"].validate((valid) => {
         if (valid) {
           updateUser(this.temp).then(() => {
-            this.handleFilter(false)
-            this.dialogFormVisible = false
+            this.handleFilter(false);
+            this.dialogFormVisible = false;
             this.$notify({
               title: this.$i18n.t("MyAbpVnext['Success']"),
               message: this.$i18n.t("MyAbpVnext['SuccessMessage']"),
-              type: 'success',
-              duration: 2000
-            })
-          })
+              type: "success",
+              duration: 2000,
+            });
+          });
         }
-      })
+      });
     },
     handleDelete(row, index) {
       this.$confirm(
         this.$i18n.t("AbpIdentity['UserDeletionConfirmationMessage']", [
-          row.userName
+          row.userName,
         ]),
         this.$i18n.t("AbpIdentity['AreYouSure']"),
         {
           confirmButtonText: this.$i18n.t("AbpIdentity['Yes']"),
           cancelButtonText: this.$i18n.t("AbpIdentity['Cancel']"),
-          type: 'warning'
+          type: "warning",
         }
-      ).then(async() => {
+      ).then(async () => {
         deleteUser(row.id).then(() => {
-          this.handleFilter()
+          this.handleFilter();
           this.$notify({
             title: this.$i18n.t("MyAbpVnext['Success']"),
             message: this.$i18n.t("MyAbpVnext['SuccessMessage']"),
-            type: 'success',
-            duration: 2000
-          })
-        })
-      })
+            type: "success",
+            duration: 2000,
+          });
+        });
+      });
     },
     handleUpdatePermission(row) {
-      this.$refs['permissionDialog'].handleUpdatePermission(row)
-    }
-  }
-}
+      this.$refs["permissionDialog"].handleUpdatePermission(row);
+    },
+  },
+};
 </script>

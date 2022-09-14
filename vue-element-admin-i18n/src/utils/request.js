@@ -66,10 +66,11 @@ service.interceptors.response.use(
 
     let message = ''
     if (error.response && error.response.data && error.response.data.error) {
-      message = error.response.data.error.message
+      message = error.response.data.error
     } else {
       message = error.message
     }
+    console.log( error.response) // for debug
 
     Message({
       message: message,

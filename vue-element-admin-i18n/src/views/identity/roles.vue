@@ -62,7 +62,7 @@
             type="danger"
             @click="handleDelete(row, $index)"
           >
-            {{ $t("AbpIdentity['Delete']") }}
+            {{ $t("AbpUi['Delete']") }}
           </el-button>
         </template>
       </el-table-column>

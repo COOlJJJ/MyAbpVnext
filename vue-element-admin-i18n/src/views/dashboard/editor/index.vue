@@ -12,7 +12,7 @@
       </div>
     </div>
     <div>
-      <img :src="emptyGif" class="emptyGif">
+      <!-- <img :src="emptyGif" class="emptyGif"> -->
     </div>
   </div>
 </template>
