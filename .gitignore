@@ -1,0 +1,5 @@
+
+*.txt
+aspnet-core/NuGet.Config
+aspnet-core/common.props
+aspnet-core/.prettierrc

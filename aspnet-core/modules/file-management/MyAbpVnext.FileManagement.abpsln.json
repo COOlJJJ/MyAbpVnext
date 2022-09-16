@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "MyAbpVnext.FileManagement": {
+      "path": "MyAbpVnext.FileManagement.abpmdl.json"
+    }
+  }
+}

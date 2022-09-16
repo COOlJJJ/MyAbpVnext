@@ -19,6 +19,7 @@
     <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="5.2.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.2.2" />
     <PackageReference Include="Volo.Abp.Swashbuckle" Version="5.2.2" />
+	  <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>

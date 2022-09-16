@@ -1,24 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>MyAbpVnext</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>MyAbpVnext</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MyAbpVnext.Domain.Shared\MyAbpVnext.Domain.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\MyAbpVnext.Domain.Shared\MyAbpVnext.Domain.Shared.csproj" />
+		<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.Application.Contracts\MyAbpVnext.FileManagement.Application.Contracts.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.ObjectExtending" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="5.2.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Volo.Abp.ObjectExtending" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="5.2.2" />
+	</ItemGroup>
 
 </Project>

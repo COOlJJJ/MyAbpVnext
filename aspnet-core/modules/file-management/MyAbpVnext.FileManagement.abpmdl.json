@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "MyAbpVnext.FileManagement.Domain.Shared": {
+      "path": "src/MyAbpVnext.FileManagement.Domain.Shared/MyAbpVnext.FileManagement.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.Domain": {
+      "path": "src/MyAbpVnext.FileManagement.Domain/MyAbpVnext.FileManagement.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.Application.Contracts": {
+      "path": "src/MyAbpVnext.FileManagement.Application.Contracts/MyAbpVnext.FileManagement.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.Application": {
+      "path": "src/MyAbpVnext.FileManagement.Application/MyAbpVnext.FileManagement.Application.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.EntityFrameworkCore": {
+      "path": "src/MyAbpVnext.FileManagement.EntityFrameworkCore/MyAbpVnext.FileManagement.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.MongoDB": {
+      "path": "src/MyAbpVnext.FileManagement.MongoDB/MyAbpVnext.FileManagement.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.HttpApi": {
+      "path": "src/MyAbpVnext.FileManagement.HttpApi/MyAbpVnext.FileManagement.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.HttpApi.Client": {
+      "path": "src/MyAbpVnext.FileManagement.HttpApi.Client/MyAbpVnext.FileManagement.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "MyAbpVnext.FileManagement.TestBase": {
+      "path": "test/MyAbpVnext.FileManagement.TestBase/MyAbpVnext.FileManagement.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.EntityFrameworkCore.Tests": {
+      "path": "test/MyAbpVnext.FileManagement.EntityFrameworkCore.Tests/MyAbpVnext.FileManagement.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.MongoDB.Tests": {
+      "path": "test/MyAbpVnext.FileManagement.MongoDB.Tests/MyAbpVnext.FileManagement.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.Domain.Tests": {
+      "path": "test/MyAbpVnext.FileManagement.Domain.Tests/MyAbpVnext.FileManagement.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.Application.Tests": {
+      "path": "test/MyAbpVnext.FileManagement.Application.Tests/MyAbpVnext.FileManagement.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.HttpApi.Host": {
+      "path": "host/MyAbpVnext.FileManagement.HttpApi.Host/MyAbpVnext.FileManagement.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "MyAbpVnext.FileManagement.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/MyAbpVnext.FileManagement.HttpApi.Client.ConsoleTestApp/MyAbpVnext.FileManagement.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "MyAbpVnext.FileManagement.IdentityServer": {
+      "path": "host/MyAbpVnext.FileManagement.IdentityServer/MyAbpVnext.FileManagement.IdentityServer.abppkg.json",
+      "folder": "host"
+    },
+    "MyAbpVnext.FileManagement.Host.Shared": {
+      "path": "host/MyAbpVnext.FileManagement.Host.Shared/MyAbpVnext.FileManagement.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

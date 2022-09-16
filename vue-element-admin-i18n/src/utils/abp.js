@@ -70,4 +70,14 @@ export function checkPermission(policy) {
   }
 }
 
+export function getFilePathByName(name) {
+  const reg = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/
+
+  if (reg.test(name)) {
+    return name
+  }
+
+  return process.env.VUE_APP_BASE_API + '/api/file-management/files/' + name
+}
+
 export default baseListQuery

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyAbpVnext.Authors;
 using MyAbpVnext.Books;
+using MyAbpVnext.FileManagement.EntityFrameworkCore;
 using MyAbpVnext.Users;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -78,7 +79,7 @@ public class MyAbpVnextDbContext :
         builder.ConfigureIdentityServer();
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
-
+        builder.ConfigureFileManagement();
 
         //配置实体映射
         /* Configure your own tables/entities inside here */
