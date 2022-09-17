@@ -100,8 +100,8 @@ export default {
         this.$store.dispatch('user/setUserInfo', userInfo).then(res => {
           this.loading = false
           this.$notify({
-            title: this.$i18n.t("AbpUi['Success']"),
-            message: this.$i18n.t("AbpUi['SuccessMessage']"),
+            title: this.$i18n.t("MyAbpVnext['Success']"),
+            message: this.$i18n.t("MyAbpVnext['SuccessMessage']"),
             type: 'success',
             duration: 2000
           })

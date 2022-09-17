@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
+using MyAbpVnext.FileManagement.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -29,7 +30,8 @@ namespace MyAbpVnext.EntityFrameworkCore;
     typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpTenantManagementEntityFrameworkCoreModule),
-    typeof(AbpFeatureManagementEntityFrameworkCoreModule)
+    typeof(AbpFeatureManagementEntityFrameworkCoreModule),
+    typeof(FileManagementEntityFrameworkCoreModule)
     )]
 public class MyAbpVnextEntityFrameworkCoreModule : AbpModule
 {
@@ -42,17 +44,17 @@ public class MyAbpVnextEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<MyAbpVnextDbContext>(options =>
         {
-                //所有实体都可以创建仓储库
-                /* Remove "includeAllEntities: true" to create
-                 * default repositories only for aggregate roots */
+            //所有实体都可以创建仓储库
+            /* Remove "includeAllEntities: true" to create
+             * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 
         Configure<AbpDbContextOptions>(options =>
         {
-                //配置数据库
-                /* The main point to change your DBMS.
-                 * See also MyAbpVnextMigrationsDbContextFactory for EF Core tooling. */
+            //配置数据库
+            /* The main point to change your DBMS.
+             * See also MyAbpVnextMigrationsDbContextFactory for EF Core tooling. */
             options.UseMySQL();
         });
     }

@@ -12,7 +12,7 @@ public class FileManagementHttpApiHostMigrationsDbContextFactory : IDesignTimeDb
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<FileManagementHttpApiHostMigrationsDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("FileManagement"));
+            .UseMySql(configuration.GetConnectionString("FileManagement"), MySqlServerVersion.LatestSupportedServerVersion);
 
         return new FileManagementHttpApiHostMigrationsDbContext(builder.Options);
     }

@@ -41,7 +41,7 @@ namespace MyAbpVnext.FileManagement.Files
             };
         }
 
-        //[Authorize(FileManagementPermissions.Files.Create)]
+        [Authorize(FileManagementPermissions.Files.Create)]
         public virtual async Task<string> CreateAsync(FileDto input)
         {
             await CheckFile(input);
@@ -62,19 +62,20 @@ namespace MyAbpVnext.FileManagement.Files
                     });
             }
 
-            var allowedMaxFileSize = await SettingProvider.GetAsync<int>(FileManagementSettings.AllowedMaxFileSize);//kb
-            var allowedUploadFormats = (await SettingProvider.GetOrNullAsync(FileManagementSettings.AllowedUploadFormats))
-                ?.Split(",", StringSplitOptions.RemoveEmptyEntries);
+            //这边使用SettingProvider 注入失败 先注释继续往下测试= =
+            //var allowedMaxFileSize = await SettingProvider.GetAsync<int>(FileManagementSettings.AllowedMaxFileSize);//kb
+            //var allowedUploadFormats = (await SettingProvider.GetOrNullAsync(FileManagementSettings.AllowedUploadFormats))
+            //    ?.Split(",", StringSplitOptions.RemoveEmptyEntries);
 
-            if (input.Bytes.Length > allowedMaxFileSize * 1024)
-            {
-                throw new UserFriendlyException(L["FileManagement.ExceedsTheMaximumSize", allowedMaxFileSize]);
-            }
+            //if (input.Bytes.Length > allowedMaxFileSize * 1024)
+            //{
+            //    throw new UserFriendlyException(L["FileManagement.ExceedsTheMaximumSize", allowedMaxFileSize]);
+            //}
 
-            if (allowedUploadFormats == null || !allowedUploadFormats.Contains(Path.GetExtension(input.FileName)))
-            {
-                throw new UserFriendlyException(L["FileManagement.NotValidFormat"]);
-            }
+            //if (allowedUploadFormats == null || !allowedUploadFormats.Contains(Path.GetExtension(input.FileName)))
+            //{
+            //    throw new UserFriendlyException(L["FileManagement.NotValidFormat"]);
+            //}
         }
 
     }

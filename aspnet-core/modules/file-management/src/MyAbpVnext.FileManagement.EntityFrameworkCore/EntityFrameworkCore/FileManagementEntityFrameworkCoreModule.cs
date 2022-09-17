@@ -19,7 +19,8 @@ public class FileManagementEntityFrameworkCoreModule : AbpModule
             /* Add custom repositories here. Example:
              * options.AddRepository<Question, EfCoreQuestionRepository>();
              */
-            options.AddRepository<File, EfCoreFileRepository>();
+            options.AddDefaultRepositories(includeAllEntities: true);
+            options.AddRepository<File, FileRepository>();
         });
     }
 }
