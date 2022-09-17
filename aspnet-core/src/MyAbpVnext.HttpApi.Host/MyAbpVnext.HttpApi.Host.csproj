@@ -19,13 +19,15 @@
     <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="5.2.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.2.2" />
     <PackageReference Include="Volo.Abp.Swashbuckle" Version="5.2.2" />
-	  <PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="5.2.2" />
+	<PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MyAbpVnext.Application\MyAbpVnext.Application.csproj" />
     <ProjectReference Include="..\MyAbpVnext.EntityFrameworkCore\MyAbpVnext.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\MyAbpVnext.HttpApi\MyAbpVnext.HttpApi.csproj" />
+	<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.HttpApi.Client\MyAbpVnext.FileManagement.HttpApi.Client.csproj" />
+	
   </ItemGroup>
 
   <ItemGroup>

@@ -10,7 +10,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\MyAbpVnext.Domain\MyAbpVnext.Domain.csproj" />
 		<ProjectReference Include="..\MyAbpVnext.Application.Contracts\MyAbpVnext.Application.Contracts.csproj" />
-		<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.Application\MyAbpVnext.FileManagement.Application.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

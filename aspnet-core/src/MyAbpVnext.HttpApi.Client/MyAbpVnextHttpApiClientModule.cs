@@ -7,6 +7,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.Http.Client.IdentityModel;
 
 namespace MyAbpVnext;
 
@@ -18,6 +19,14 @@ namespace MyAbpVnext;
 ///.HttpApi.Client.ConsoleTestApp 项目是一个用于演示客户端代理用法的控制台应用程序.
 ///它依赖.Application.Contracts 项目, 因为它需要使用应用服务接口和DTO.
 ///如果你不需要为API创建动态C#客户端代理,可以删除此项目和依赖项
+///------------------------------------------------------------------
+///在主项目中将模块的Application层和Domain层的大部分项目都引用了一遍，那种方式是单体部署的情况，模块和主项目托管在同一个进程里。
+///1.第一次就是添加了各种引用和DependsOn 这种算是单体项目的合体的感觉 同时会遗漏DependsOn。
+///DependsOn依赖注意的是EFCORE注册自定义仓储和Api层注入权限，但本质是用到了契约层。只不过在Api层注入可以获得Api同时把权限也注入。
+///2.下面使用C# API客户端来代理远程模块。
+///然后在你需要调用模块的项目中，添加模块的HttpApi.Client项目的依赖即可。比如我这里的MyAbpVnext.HttpApi.Host项目：
+///首先删除项目中模块的引用和DependsOn
+///这样的只需要添加Client和Api的项目引用和依赖即可。
 /// </summary>
 [DependsOn(
     typeof(MyAbpVnextApplicationContractsModule),
@@ -25,6 +34,7 @@ namespace MyAbpVnext;
     typeof(AbpIdentityHttpApiClientModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
     typeof(AbpTenantManagementHttpApiClientModule),
+    typeof(AbpHttpClientIdentityModelModule),
     typeof(AbpFeatureManagementHttpApiClientModule),
     typeof(AbpSettingManagementHttpApiClientModule)
 )]

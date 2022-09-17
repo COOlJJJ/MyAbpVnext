@@ -9,7 +9,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MyAbpVnext.Domain.Shared\MyAbpVnext.Domain.Shared.csproj" />
-		<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.Domain\MyAbpVnext.FileManagement.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

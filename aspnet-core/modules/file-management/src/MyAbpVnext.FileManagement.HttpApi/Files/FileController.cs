@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyAbpVnext.FileManagement.Permissions;
 using Volo.Abp;
 using Volo.Abp.Http;
 
@@ -29,7 +30,7 @@ namespace MyAbpVnext.FileManagement.Files
 
         [HttpPost]
         [Route("upload")]
-        //[Authorize]
+        [Authorize]
         public virtual async Task<JsonResult> CreateAsync(IFormFile file)
         {
             if (file == null)

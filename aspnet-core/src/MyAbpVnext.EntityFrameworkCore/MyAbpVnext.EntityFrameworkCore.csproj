@@ -9,7 +9,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\MyAbpVnext.Domain\MyAbpVnext.Domain.csproj" />
-		<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.EntityFrameworkCore\MyAbpVnext.FileManagement.EntityFrameworkCore.csproj" />
 
 		<PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="5.2.2" />
 		<PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="5.2.2" />

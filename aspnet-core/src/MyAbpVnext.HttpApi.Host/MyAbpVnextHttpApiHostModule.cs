@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MyAbpVnext.EntityFrameworkCore;
+using MyAbpVnext.FileManagement;
 using MyAbpVnext.MultiTenancy;
 using StackExchange.Redis;
 using System;
@@ -38,7 +39,8 @@ namespace MyAbpVnext;
     typeof(MyAbpVnextEntityFrameworkCoreModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
-    typeof(AbpBlobStoringFileSystemModule)
+    typeof(AbpBlobStoringFileSystemModule),
+    typeof(FileManagementHttpApiClientModule)
 )]
 public class MyAbpVnextHttpApiHostModule : AbpModule
 {
