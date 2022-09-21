@@ -30,7 +30,6 @@ namespace MyAbpVnext.FileManagement.Files
 
         [HttpPost]
         [Route("upload")]
-        [Authorize]
         public virtual async Task<JsonResult> CreateAsync(IFormFile file)
         {
             if (file == null)

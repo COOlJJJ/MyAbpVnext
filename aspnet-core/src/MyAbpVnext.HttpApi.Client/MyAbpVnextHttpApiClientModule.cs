@@ -8,9 +8,9 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.Http.Client.IdentityModel;
+ 
 
 namespace MyAbpVnext;
-
 
 /// <summary>
 /// .HttpApi.Client 项目

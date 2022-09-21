@@ -1,11 +1,12 @@
 ﻿using Localization.Resources.AbpUi;
+using Microsoft.Extensions.DependencyInjection;
 using MyAbpVnext.FileManagement.Localization;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MyAbpVnext.FileManagement;
+
 
 [DependsOn(
     typeof(FileManagementApplicationContractsModule),
