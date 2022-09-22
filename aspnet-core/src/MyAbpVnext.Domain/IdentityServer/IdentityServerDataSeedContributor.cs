@@ -137,7 +137,8 @@ public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransien
                 "role",
                 "phone",
                 "address",
-                "MyAbpVnext"
+                "MyAbpVnext",
+                "FileManagement"
             };
 
         var configurationSection = _configuration.GetSection("IdentityServer:Clients");
@@ -209,8 +210,8 @@ public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransien
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AllowOfflineAccess = true,
                     AbsoluteRefreshTokenLifetime = 31536000, //365 days
-                        AccessTokenLifetime = 31536000, //365 days
-                        AuthorizationCodeLifetime = 300,
+                    AccessTokenLifetime = 31536000, //365 days
+                    AuthorizationCodeLifetime = 300,
                     IdentityTokenLifetime = 300,
                     RequireConsent = false,
                     FrontChannelLogoutUri = frontChannelLogoutUri,

@@ -3,3 +3,5 @@
 aspnet-core/NuGet.Config
 aspnet-core/common.props
 aspnet-core/.prettierrc
+aspnet-core/src/MyAbpVnext.IdentityServer/MyAbpVnextIdentityServerModule.cs
+*.cs

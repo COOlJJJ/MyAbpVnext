@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace MyAbpVnext.Authors
 {
-    [Authorize(MyAbpVnextPermissions.Authors.Default)]
+    //[Authorize(MyAbpVnextPermissions.Authors.Default)]
     public class AuthorAppService : MyAbpVnextAppService, IAuthorAppService
     {
         private readonly IAuthorRepository _authorRepository;
@@ -53,7 +53,7 @@ namespace MyAbpVnext.Authors
             );
         }
 
-        [Authorize(MyAbpVnextPermissions.Authors.Create)]
+        //[Authorize(MyAbpVnextPermissions.Authors.Create)]
         public async Task<AuthorDto> CreateAsync(CreateAuthorDto input)
         {
             var author = await _authorManager.CreateAsync(
@@ -67,7 +67,7 @@ namespace MyAbpVnext.Authors
             return ObjectMapper.Map<Author, AuthorDto>(author);
         }
 
-        [Authorize(MyAbpVnextPermissions.Authors.Edit)]
+        //[Authorize(MyAbpVnextPermissions.Authors.Edit)]
         public async Task UpdateAsync(Guid id, UpdateAuthorDto input)
         {
             var author = await _authorRepository.GetAsync(id);
@@ -83,7 +83,7 @@ namespace MyAbpVnext.Authors
             await _authorRepository.UpdateAsync(author);
         }
 
-        [Authorize(MyAbpVnextPermissions.Authors.Delete)]
+        //[Authorize(MyAbpVnextPermissions.Authors.Delete)]
         public async Task DeleteAsync(Guid id)
         {
             await _authorRepository.DeleteAsync(id);

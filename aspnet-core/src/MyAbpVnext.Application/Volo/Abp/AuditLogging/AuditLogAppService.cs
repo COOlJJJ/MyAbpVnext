@@ -9,7 +9,7 @@ using Volo.Abp.Application.Dtos;
 namespace Volo.Abp.AuditLogging
 {
     [RemoteService(false)]
-    [Authorize(AuditLogPermissions.AuditLogs.Default)]
+    //[Authorize(AuditLogPermissions.AuditLogs.Default)]
     public class AuditLogAppService : MyAbpVnextAppService, IAuditLogAppService
     {
         protected IAuditLogRepository AuditLogRepository { get; }
@@ -61,13 +61,13 @@ namespace Volo.Abp.AuditLogging
             );
         }
 
-        [Authorize(AuditLogPermissions.AuditLogs.Delete)]
+        //[Authorize(AuditLogPermissions.AuditLogs.Delete)]
         public Task DeleteAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        [Authorize(AuditLogPermissions.AuditLogs.Delete)]
+        //[Authorize(AuditLogPermissions.AuditLogs.Delete)]
         public virtual async Task DeleteManyAsync(params Guid[] ids)
         {
             foreach (var id in ids)

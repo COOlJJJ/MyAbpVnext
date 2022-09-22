@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyAbpVnext.FileManagement.Files;
-using System;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Users;
 
@@ -14,16 +12,13 @@ namespace MyAbpVnext.Controllers;
 public class MyAbpVnextDemoController : MyAbpVnextController
 {
     readonly ICurrentTenant currentTenant;
+    private readonly IPersonService personService;
     readonly ICurrentUser currentUser;
-    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant, IFileAppService fileAppService)
+    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant, IPersonService personService)
     {
         currentTenant = _currentTenant;
+        this.personService = personService;
         currentUser = _currentUser;
-        #region For Test Api Client
-        var result = fileAppService.FindByBlobNameAsync("e212e607fcc74347bfc989424d80a164").GetAwaiter().GetResult();
-        Console.WriteLine(result);
-        #endregion
-
     }
 
     [HttpGet]
@@ -33,6 +28,13 @@ public class MyAbpVnextDemoController : MyAbpVnextController
         return "当前用户：" + currentUser.Name + ",当前租户：" + currentTenant.Name;
     }
 
+    [HttpGet]
+    [Route("TEST")]
+    public string TEST()
+    {
+        personService.Test();
+        return "200";
+    }
 
 
 }

@@ -23,7 +23,7 @@ namespace MyAbpVnext.Books
     ///BookAppService注入IRepository <Book,Guid>,这是Book实体的默认仓储.ABP自动为每个聚合根(或实体) 创建默认仓储.请参阅仓储文档
     ///BookAppService使用IObjectMapper将Book对象转换为BookDto对象, 将CreateUpdateBookDto对象转换为Book对象.启动模板使用AutoMapper库作为对象映射提供程序.我们之前定义了映射, 因此它将按预期工作
     /// </summary>
-    [Authorize(MyAbpVnextPermissions.Books.Default)]
+    //[Authorize(MyAbpVnextPermissions.Books.Default)]
     public class BookAppService :
         CrudAppService<
             Book, //The Book entity

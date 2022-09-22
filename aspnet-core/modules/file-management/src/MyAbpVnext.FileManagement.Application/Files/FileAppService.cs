@@ -41,11 +41,7 @@ namespace MyAbpVnext.FileManagement.Files
             };
         }
 
-        /// <summary>
-        /// 在微服务架构下 我们的Action方法不做鉴权 这部分都放入网关中
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+
         public virtual async Task<string> CreateAsync(FileDto input)
         {
             await CheckFile(input);
