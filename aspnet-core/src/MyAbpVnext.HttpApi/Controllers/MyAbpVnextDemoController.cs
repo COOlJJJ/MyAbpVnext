@@ -12,9 +12,9 @@ namespace MyAbpVnext.Controllers;
 public class MyAbpVnextDemoController : MyAbpVnextController
 {
     readonly ICurrentTenant currentTenant;
-    private readonly IPersonService personService;
+    private readonly IPersonAppService personService;
     readonly ICurrentUser currentUser;
-    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant, IPersonService personService)
+    public MyAbpVnextDemoController(ICurrentUser _currentUser, ICurrentTenant _currentTenant, IPersonAppService personService)
     {
         currentTenant = _currentTenant;
         this.personService = personService;

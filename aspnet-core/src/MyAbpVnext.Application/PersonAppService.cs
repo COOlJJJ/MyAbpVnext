@@ -10,7 +10,7 @@ using Volo.Abp.Application.Services;
 namespace MyAbpVnext
 {
     [RemoteService(IsEnabled = false)] //or simply [RemoteService(false)]
-    public class PersonAppService : ApplicationService, IPersonService
+    public class PersonAppService : ApplicationService, IPersonAppService
     {
         readonly IFileAppService _fileAppService;
 

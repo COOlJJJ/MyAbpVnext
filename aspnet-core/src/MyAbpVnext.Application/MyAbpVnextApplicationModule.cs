@@ -29,7 +29,6 @@ namespace MyAbpVnext;
     typeof(AbpSettingManagementApplicationModule),
     typeof(AbpHttpClientIdentityModelModule),
     typeof(AbpIdentityHttpApiClientModule)
-
     )]
 public class MyAbpVnextApplicationModule : AbpModule
 {
