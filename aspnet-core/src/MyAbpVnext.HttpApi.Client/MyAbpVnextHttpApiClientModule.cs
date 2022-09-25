@@ -1,14 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
-using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
-using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.TenantManagement;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Abp.Http.Client.IdentityModel;
- 
+
 
 namespace MyAbpVnext;
 
@@ -31,10 +29,8 @@ namespace MyAbpVnext;
 [DependsOn(
     typeof(MyAbpVnextApplicationContractsModule),
     typeof(AbpAccountHttpApiClientModule),
-    typeof(AbpIdentityHttpApiClientModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
     typeof(AbpTenantManagementHttpApiClientModule),
-    typeof(AbpHttpClientIdentityModelModule),
     typeof(AbpFeatureManagementHttpApiClientModule),
     typeof(AbpSettingManagementHttpApiClientModule)
 )]

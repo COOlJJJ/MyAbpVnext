@@ -1,40 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>MyAbpVnext</RootNamespace>
-    <PreserveCompilationReferences>true</PreserveCompilationReferences>
-    <UserSecretsId>MyAbpVnext-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>MyAbpVnext</RootNamespace>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<UserSecretsId>MyAbpVnext-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
-    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Autofac" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Swashbuckle" Version="5.2.2" />
-	<PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="5.2.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Autofac" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Caching.StackExchangeRedis" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Swashbuckle" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.BlobStoring.FileSystem" Version="5.2.2" />
+		<PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="5.2.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MyAbpVnext.Application\MyAbpVnext.Application.csproj" />
-    <ProjectReference Include="..\MyAbpVnext.EntityFrameworkCore\MyAbpVnext.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\MyAbpVnext.HttpApi\MyAbpVnext.HttpApi.csproj" />
-	<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.HttpApi.Client\MyAbpVnext.FileManagement.HttpApi.Client.csproj" />
-	
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\MyAbpVnext.Application\MyAbpVnext.Application.csproj" />
+		<ProjectReference Include="..\MyAbpVnext.EntityFrameworkCore\MyAbpVnext.EntityFrameworkCore.csproj" />
+		<ProjectReference Include="..\MyAbpVnext.HttpApi\MyAbpVnext.HttpApi.csproj" />
+		<ProjectReference Include="..\..\modules\file-management\src\MyAbpVnext.FileManagement.HttpApi.Client\MyAbpVnext.FileManagement.HttpApi.Client.csproj" />
 
-  <ItemGroup>
-    <Compile Remove="Logs\**" />
-    <Content Remove="Logs\**" />
-    <EmbeddedResource Remove="Logs\**" />
-    <None Remove="Logs\**" />
-  </ItemGroup>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="Logs\**" />
+		<Content Remove="Logs\**" />
+		<EmbeddedResource Remove="Logs\**" />
+		<None Remove="Logs\**" />
+	</ItemGroup>
 
 </Project>

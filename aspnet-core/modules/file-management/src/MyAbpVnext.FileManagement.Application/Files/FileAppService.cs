@@ -18,6 +18,7 @@ namespace MyAbpVnext.FileManagement.Files
     /// 参考xhznl的添加文件管理模块
     /// 初步体验模块化开发
     /// </summary>
+    [RemoteService]
     public class FileAppService : FileManagementAppService, IFileAppService
     {
         protected IFileManager FileManager { get; }
@@ -27,6 +28,7 @@ namespace MyAbpVnext.FileManagement.Files
             FileManager = fileManager;
         }
 
+        [Authorize]
         public virtual async Task<FileDto> FindByBlobNameAsync(string blobName)
         {
             Check.NotNullOrWhiteSpace(blobName, nameof(blobName));

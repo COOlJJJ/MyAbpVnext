@@ -24,6 +24,8 @@ using Volo.Abp.BlobStoring;
 using Volo.Abp.BlobStoring.FileSystem;
 using Volo.Abp.Caching;
 using Volo.Abp.Caching.StackExchangeRedis;
+using Volo.Abp.Http.Client.IdentityModel;
+using Volo.Abp.Identity;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
@@ -40,6 +42,7 @@ namespace MyAbpVnext;
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule),
     typeof(AbpBlobStoringFileSystemModule),
+    typeof(AbpHttpClientIdentityModelModule),
     typeof(FileManagementHttpApiClientModule)
 )]
 public class MyAbpVnextHttpApiHostModule : AbpModule
